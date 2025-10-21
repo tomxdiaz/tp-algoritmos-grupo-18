@@ -12,15 +12,15 @@ const ejemplo1: Punto[] = [
 ];
 
 // Funcion para encontrar los dos puntos mas alejados - FORMA INGENUA
-function obtenerPuntosMasAlejados(puntos: Punto[]): { puntosMasAlejados: Punto[]; tiempoDeEjecucion: number } {
+function obtenerPuntosMasAlejadosIngenua(puntos: Punto[]): { puntosMasAlejados: Punto[]; tiempoDeEjecucion: number } {
   if (puntos.length < 2) {
     return { puntosMasAlejados: [], tiempoDeEjecucion: 0 };
   }
 
+  const startTime = performance.now();
+
   let maxDistancia = 0;
   let puntosMasAlejados: Punto[] = [];
-
-  const startTime = performance.now();
 
   for (let i = 0; i < puntos.length; i++) {
     for (let j = i + 1; j < puntos.length; j++) {
@@ -41,7 +41,20 @@ function obtenerPuntosMasAlejados(puntos: Punto[]): { puntosMasAlejados: Punto[]
   return { puntosMasAlejados, tiempoDeEjecucion };
 }
 
-const resultadoEjemplo1 = obtenerPuntosMasAlejados(ejemplo1);
+const ejemplo1Ingenua = obtenerPuntosMasAlejadosIngenua(ejemplo1);
 
-console.log('Ejemplo 1 - Forma Ingenua - Resultado  - ', ejemplo1.length, 'elementos:', resultadoEjemplo1.puntosMasAlejados);
-console.log('Ejemplo 1 - Forma Ingenua - Tiempo de ejecucion - ', ejemplo1.length, 'elementos:', resultadoEjemplo1.tiempoDeEjecucion);
+console.log('Ejemplo 1 - Forma Ingenua - Resultado  - ', ejemplo1.length, 'puntos:', ejemplo1Ingenua.puntosMasAlejados);
+console.log('Ejemplo 1 - Forma Ingenua - Tiempo de ejecucion - ', ejemplo1.length, 'puntos:', ejemplo1Ingenua.tiempoDeEjecucion);
+
+// Funcion para encontrar los dos puntos mas alejados - DIVIDE AND CONQUER
+function obtenerPuntosMasAlejadosDivideAndConquer(puntos: Punto[]): { puntosMasAlejados: Punto[]; tiempoDeEjecucion: number } {
+  const startTime = performance.now();
+
+  // algoritmo divide and conquer aca
+
+  const endTime = performance.now();
+
+  const tiempoDeEjecucion = endTime - startTime;
+
+  return { puntosMasAlejados: [], tiempoDeEjecucion };
+}
