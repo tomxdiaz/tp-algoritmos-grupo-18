@@ -16,12 +16,10 @@ const ejemplo4: Punto[] = generarListaDePuntosAleatorios(5000, 5000);
 const ejemplo5: Punto[] = generarListaDePuntosAleatorios(20000, 20000);
 
 // Funcion para encontrar los dos puntos mas cercanos - FORMA INGENUA
-function obtenerPuntosMasCercanosIngenua(puntos: Punto[]): { puntosMasCercanos: Punto[]; tiempoDeEjecucion: number } {
+function obtenerPuntosMasCercanosIngenua(puntos: Punto[]): Punto[] {
   if (puntos.length <= 2) {
-    return { puntosMasCercanos: puntos, tiempoDeEjecucion: 0 };
+    return puntos;
   }
-
-  const startTime = performance.now();
 
   let minDistancia = Infinity;
   let puntosMasCercanos: Punto[] = [];
@@ -38,37 +36,53 @@ function obtenerPuntosMasCercanosIngenua(puntos: Punto[]): { puntosMasCercanos: 
     }
   }
 
-  const endTime = performance.now();
-
-  const tiempoDeEjecucion = endTime - startTime;
-
-  return { puntosMasCercanos, tiempoDeEjecucion };
+  return puntosMasCercanos;
 }
 
+//
+
+const startTimeEjemplo1 = performance.now();
 const ejemplo1Ingenua = obtenerPuntosMasCercanosIngenua(ejemplo1);
+const endTimeEjemplo1 = performance.now();
+const tiempoDeEjecucionEjemplo1 = endTimeEjemplo1 - startTimeEjemplo1;
+console.log('Ejemplo 1 - Forma Ingenua - Resultado  - ', ejemplo1.length, 'puntos:', ejemplo1Ingenua);
+console.log('Ejemplo 1 - Forma Ingenua - Tiempo de ejecucion - ', ejemplo1.length, 'puntos:', tiempoDeEjecucionEjemplo1);
 
-console.log('Ejemplo 1 - Forma Ingenua - Resultado  - ', ejemplo1.length, 'puntos:', ejemplo1Ingenua.puntosMasCercanos);
-console.log('Ejemplo 1 - Forma Ingenua - Tiempo de ejecucion - ', ejemplo1.length, 'puntos:', ejemplo1Ingenua.tiempoDeEjecucion);
+//
 
+const startTimeEjemplo2 = performance.now();
 const ejemplo2Ingenua = obtenerPuntosMasCercanosIngenua(ejemplo2);
+const endTimeEjemplo2 = performance.now();
+const tiempoDeEjecucionEjemplo2 = endTimeEjemplo2 - startTimeEjemplo2;
+console.log('Ejemplo 2 - Forma Ingenua - Resultado  - ', ejemplo2.length, 'puntos:', ejemplo2Ingenua);
+console.log('Ejemplo 2 - Forma Ingenua - Tiempo de ejecucion - ', ejemplo2.length, 'puntos:', tiempoDeEjecucionEjemplo2);
 
-console.log('Ejemplo 2 - Forma Ingenua - Resultado  - ', ejemplo2.length, 'puntos:', ejemplo2Ingenua.puntosMasCercanos);
-console.log('Ejemplo 2 - Forma Ingenua - Tiempo de ejecucion - ', ejemplo2.length, 'puntos:', ejemplo2Ingenua.tiempoDeEjecucion);
+//
 
+const startTimeEjemplo3 = performance.now();
 const ejemplo3Ingenua = obtenerPuntosMasCercanosIngenua(ejemplo3);
+const endTimeEjemplo3 = performance.now();
+const tiempoDeEjecucionEjemplo3 = endTimeEjemplo3 - startTimeEjemplo3;
+console.log('Ejemplo 3 - Forma Ingenua - Resultado  - ', ejemplo3.length, 'puntos:', ejemplo3Ingenua);
+console.log('Ejemplo 3 - Forma Ingenua - Tiempo de ejecucion - ', ejemplo3.length, 'puntos:', tiempoDeEjecucionEjemplo3);
 
-console.log('Ejemplo 3 - Forma Ingenua - Resultado  - ', ejemplo3.length, 'puntos:', ejemplo3Ingenua.puntosMasCercanos);
-console.log('Ejemplo 3 - Forma Ingenua - Tiempo de ejecucion - ', ejemplo3.length, 'puntos:', ejemplo3Ingenua.tiempoDeEjecucion);
+//
 
+const startTimeEjemplo4 = performance.now();
 const ejemplo4Ingenua = obtenerPuntosMasCercanosIngenua(ejemplo4);
+const endTimeEjemplo4 = performance.now();
+const tiempoDeEjecucionEjemplo4 = endTimeEjemplo4 - startTimeEjemplo4;
+console.log('Ejemplo 4 - Forma Ingenua - Resultado  - ', ejemplo4.length, 'puntos:', ejemplo4Ingenua);
+console.log('Ejemplo 4 - Forma Ingenua - Tiempo de ejecucion - ', ejemplo4.length, 'puntos:', tiempoDeEjecucionEjemplo4);
 
-console.log('Ejemplo 4 - Forma Ingenua - Resultado  - ', ejemplo4.length, 'puntos:', ejemplo4Ingenua.puntosMasCercanos);
-console.log('Ejemplo 4 - Forma Ingenua - Tiempo de ejecucion - ', ejemplo4.length, 'puntos:', ejemplo4Ingenua.tiempoDeEjecucion);
+//
 
+const startTimeEjemplo5 = performance.now();
 const ejemplo5Ingenua = obtenerPuntosMasCercanosIngenua(ejemplo5);
-
-console.log('Ejemplo 5 - Forma Ingenua - Resultado  - ', ejemplo5.length, 'puntos:', ejemplo5Ingenua.puntosMasCercanos);
-console.log('Ejemplo 5 - Forma Ingenua - Tiempo de ejecucion - ', ejemplo5.length, 'puntos:', ejemplo5Ingenua.tiempoDeEjecucion);
+const endTimeEjemplo5 = performance.now();
+const tiempoDeEjecucionEjemplo5 = endTimeEjemplo5 - startTimeEjemplo5;
+console.log('Ejemplo 5 - Forma Ingenua - Resultado  - ', ejemplo5.length, 'puntos:', ejemplo5Ingenua);
+console.log('Ejemplo 5 - Forma Ingenua - Tiempo de ejecucion - ', ejemplo5.length, 'puntos:', tiempoDeEjecucionEjemplo5);
 
 // Funcion para encontrar los dos puntos mas cercanos - DIVIDE AND CONQUER
 function obtenerPuntosMasCercanosDivideAndConquer(puntos: Punto[]): { puntosMasCercanos: Punto[]; tiempoDeEjecucion: number } {
