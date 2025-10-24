@@ -35,50 +35,45 @@ function actividades(actividades: Actividad[]): Actividad[] {
 }
 
 //
-
+console.log('--- EJEMPLO 1 GREEDY ---');
 const startTimeEjemplo1 = performance.now();
 const ejemplo1Greedy = actividades(ejemplo1);
 const endTimeEjemplo1 = performance.now();
 const tiempoDeEjecucionEjemplo1 = endTimeEjemplo1 - startTimeEjemplo1;
-console.log('Ejemplo 1 - Forma Greedy - Resultado  - ', ejemplo1.length, 'actividades - cantidad de no solapadas:', ejemplo1Greedy.length);
-console.log('Ejemplo 1 - Forma Greedy - Tiempo de ejecucion - ', ejemplo1.length, 'actividades:', tiempoDeEjecucionEjemplo1);
-
+console.log('Resultado para', ejemplo1.length, 'actividades:', ejemplo1Greedy.length, 'actividades no solapadas.');
+console.log('Tiempo de ejecucion:', tiempoDeEjecucionEjemplo1.toFixed(3));
 //
-
+console.log('--- EJEMPLO 2 GREEDY ---');
 const startTimeEjemplo2 = performance.now();
 const ejemplo2Greedy = actividades(ejemplo2);
 const endTimeEjemplo2 = performance.now();
 const tiempoDeEjecucionEjemplo2 = endTimeEjemplo2 - startTimeEjemplo2;
-console.log('Ejemplo 2 - Forma Greedy - Resultado  - ', ejemplo2.length, 'actividades - cantidad de no solapadas:', ejemplo2Greedy.length);
-console.log('Ejemplo 2 - Forma Greedy - Tiempo de ejecucion - ', ejemplo2.length, 'actividades:', tiempoDeEjecucionEjemplo2);
-
+console.log('Resultado para', ejemplo2.length, 'actividades:', ejemplo2Greedy.length, 'actividades no solapadas.');
+console.log('Tiempo de ejecucion:', tiempoDeEjecucionEjemplo2.toFixed(3));
 //
-
+console.log('--- EJEMPLO 3 GREEDY ---');
 const startTimeEjemplo3 = performance.now();
 const ejemplo3Greedy = actividades(ejemplo3);
 const endTimeEjemplo3 = performance.now();
 const tiempoDeEjecucionEjemplo3 = endTimeEjemplo3 - startTimeEjemplo3;
-console.log('Ejemplo 3 - Forma Greedy - Resultado  - ', ejemplo3.length, 'actividades - cantidad de no solapadas:', ejemplo3Greedy.length);
-console.log('Ejemplo 3 - Forma Greedy - Tiempo de ejecucion - ', ejemplo3.length, 'actividades:', tiempoDeEjecucionEjemplo3);
-
+console.log('Resultado para', ejemplo3.length, 'actividades:', ejemplo3Greedy.length, 'actividades no solapadas.');
+console.log('Tiempo de ejecucion:', tiempoDeEjecucionEjemplo3.toFixed(3));
 //
-
+console.log('--- EJEMPLO 4 GREEDY ---');
 const startTimeEjemplo4 = performance.now();
 const ejemplo4Greedy = actividades(ejemplo4);
 const endTimeEjemplo4 = performance.now();
 const tiempoDeEjecucionEjemplo4 = endTimeEjemplo4 - startTimeEjemplo4;
-console.log('Ejemplo 4 - Forma Greedy - Resultado  - ', ejemplo4.length, 'actividades - cantidad de no solapadas:', ejemplo4Greedy.length);
-console.log('Ejemplo 4 - Forma Greedy - Tiempo de ejecucion - ', ejemplo4.length, 'actividades:', tiempoDeEjecucionEjemplo4);
-
+console.log('Resultado para', ejemplo4.length, 'actividades:', ejemplo4Greedy.length, 'actividades no solapadas.');
+console.log('Tiempo de ejecucion:', tiempoDeEjecucionEjemplo4.toFixed(3));
 //
-
+console.log('--- EJEMPLO 5 GREEDY ---');
 const startTimeEjemplo5 = performance.now();
 const ejemplo5Greedy = actividades(ejemplo5);
 const endTimeEjemplo5 = performance.now();
 const tiempoDeEjecucionEjemplo5 = endTimeEjemplo5 - startTimeEjemplo5;
-console.log('Ejemplo 5 - Forma Greedy - Resultado  - ', ejemplo5.length, 'actividades - cantidad de no solapadas:', ejemplo5Greedy.length);
-console.log('Ejemplo 5 - Forma Greedy - Tiempo de ejecucion - ', ejemplo5.length, 'actividades:', tiempoDeEjecucionEjemplo5);
-
+console.log('Resultado para', ejemplo5.length, 'actividades:', ejemplo5Greedy.length, 'actividades no solapadas.');
+console.log('Tiempo de ejecucion:', tiempoDeEjecucionEjemplo5.toFixed(3));
 //
 
 function generarListaDeActividadesAleatorias(cantidad: number, rango: number): Actividad[] {
