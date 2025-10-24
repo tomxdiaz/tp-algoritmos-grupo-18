@@ -87,17 +87,17 @@ console.log('Ejemplo 5 - Forma Ingenua - Resultado  - ', ejemplo5.length, 'punto
 console.log('Ejemplo 5 - Forma Ingenua - Tiempo de ejecucion - ', ejemplo5.length, 'puntos:', tiempoDeEjecucionEjemplo5);
 
 // Funcion para encontrar los dos puntos mas cercanos - DIVIDE AND CONQUER
-function obtenerPuntosMasCercanosDivideAndConquer(puntos: Punto[]): { puntosMasCercanos: Punto[]; tiempoDeEjecucion: number } {
-  const startTime = performance.now();
+function obtenerPuntosMasCercanosDivideAndConquer(puntos: Punto[]): Punto[] {
+  // algoritmo divide and conquer recursivo aca
 
-  // algoritmo divide and conquer aca
+  funcionRecursiva();
 
-  const endTime = performance.now();
-
-  const tiempoDeEjecucion = endTime - startTime;
-
-  return { puntosMasCercanos: [], tiempoDeEjecucion };
+  return [];
 }
+
+function funcionRecursiva() {}
+
+//
 
 function generarListaDePuntosAleatorios(cantidad: number, rango: number): Punto[] {
   const puntos: Punto[] = [];
