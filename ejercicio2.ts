@@ -1,23 +1,4 @@
-// Entrada:
-// 	actividades: Lista de actividades (inicio, fin) de longitud "n"
-// Salida:
-// 	S: Lista de longitud máxima posible de actividades que no se superponen
-
-// —--
-
-// funcion actividades
-// 	actividadesOrdenadas = ordenar(actividades)
-// 	S = listaVacia()
-// 	ultimoFin = Menos Infinito
-// 	para i = 0 hasta actividadesOrdenadas.longitud  - 1:
-// 		actividadActual = actividadesOrdenadas[i]
-// 		si actividadActual.inicio > ultimoFin:
-// 			S.agregar(actividadActual)
-// 			ultimoFin= actividadActual.fin
-// 		fin si
-// 	fin para
-// 	devolver S
-// fin funcion
+export {};
 
 type Actividad = {
   inicio: number;
@@ -45,4 +26,55 @@ function actividades(actividades: Actividad[]): Actividad[] {
     }
   }
   return S;
+}
+
+const ejemplo1Ingenua = obtenerPuntosMasCercanosIngenua(ejemplo1);
+const tiempoDeEjecucionEjemplo1 = endTimeEjemplo1 - startTimeEjemplo1;
+console.log('Ejemplo 1 - Forma Ingenua - Resultado  - ', ejemplo1.length, 'puntos:', ejemplo1Ingenua);
+console.log('Ejemplo 1 - Forma Ingenua - Tiempo de ejecucion - ', ejemplo1.length, 'puntos:', tiempoDeEjecucionEjemplo1);
+
+//
+
+const startTimeEjemplo2 = performance.now();
+const ejemplo2Ingenua = obtenerPuntosMasCercanosIngenua(ejemplo2);
+const endTimeEjemplo2 = performance.now();
+const tiempoDeEjecucionEjemplo2 = endTimeEjemplo2 - startTimeEjemplo2;
+console.log('Ejemplo 2 - Forma Ingenua - Resultado  - ', ejemplo2.length, 'puntos:', ejemplo2Ingenua);
+console.log('Ejemplo 2 - Forma Ingenua - Tiempo de ejecucion - ', ejemplo2.length, 'puntos:', tiempoDeEjecucionEjemplo2);
+
+//
+
+const startTimeEjemplo3 = performance.now();
+const ejemplo3Ingenua = obtenerPuntosMasCercanosIngenua(ejemplo3);
+const endTimeEjemplo3 = performance.now();
+const tiempoDeEjecucionEjemplo3 = endTimeEjemplo3 - startTimeEjemplo3;
+console.log('Ejemplo 3 - Forma Ingenua - Resultado  - ', ejemplo3.length, 'puntos:', ejemplo3Ingenua);
+console.log('Ejemplo 3 - Forma Ingenua - Tiempo de ejecucion - ', ejemplo3.length, 'puntos:', tiempoDeEjecucionEjemplo3);
+
+//
+
+const startTimeEjemplo4 = performance.now();
+const ejemplo4Ingenua = obtenerPuntosMasCercanosIngenua(ejemplo4);
+const endTimeEjemplo4 = performance.now();
+const tiempoDeEjecucionEjemplo4 = endTimeEjemplo4 - startTimeEjemplo4;
+console.log('Ejemplo 4 - Forma Ingenua - Resultado  - ', ejemplo4.length, 'puntos:', ejemplo4Ingenua);
+console.log('Ejemplo 4 - Forma Ingenua - Tiempo de ejecucion - ', ejemplo4.length, 'puntos:', tiempoDeEjecucionEjemplo4);
+
+//
+
+const startTimeEjemplo5 = performance.now();
+const ejemplo5Ingenua = obtenerPuntosMasCercanosIngenua(ejemplo5);
+const endTimeEjemplo5 = performance.now();
+const tiempoDeEjecucionEjemplo5 = endTimeEjemplo5 - startTimeEjemplo5;
+console.log('Ejemplo 5 - Forma Ingenua - Resultado  - ', ejemplo5.length, 'puntos:', ejemplo5Ingenua);
+console.log('Ejemplo 5 - Forma Ingenua - Tiempo de ejecucion - ', ejemplo5.length, 'puntos:', tiempoDeEjecucionEjemplo5);
+
+function generarListaDeActividadesAleatorias(cantidad: number, rango: number): Actividad[] {
+  const actividades: Actividad[] = [];
+  for (let i = 0; i < cantidad; i++) {
+    const inicio = Math.floor(Math.random() * rango);
+    const fin = inicio + Math.floor(Math.random() * (rango - inicio));
+    actividades.push({ inicio, fin });
+  }
+  return actividades;
 }
