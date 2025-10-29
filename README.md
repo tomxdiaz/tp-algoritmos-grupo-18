@@ -15,6 +15,6 @@ Para correrlo en consola con tsx: Instalar tsx en consola
 - Correr "tsx nombre-del-archivo.tsx" en consola desde la ubicacion del archivo
 
 - Ej: Mi archivo está en la carpeta "tp-algoritmos-grupo-18" entonces
-  abro la consola ahio voy navegando hasta ahi y ejecuto el comando.
+  abro la consola ahi o voy navegando hasta ahi y ejecuto el comando.
 
 - "tsx nombre-del..." + TAB deberia autocompletar el nombre. Ejecutar con enter
