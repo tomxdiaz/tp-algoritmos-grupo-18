@@ -2,12 +2,6 @@
 
 Trabajo Practico - Grupo 18 - Diseño y Analisis de Algoritmos
 
-Para correrlo sin instalar tsx: Instalar RunJS
-
-- Link: https://runjs.app/
-
-- Abrir el archivo con RunJS y ejecutar dandole al play
-
 Para correr los archivos con tsx: Instalar tsx en consola
 - Requisito: Tener instalado node - https://nodejs.org/es/download
 
