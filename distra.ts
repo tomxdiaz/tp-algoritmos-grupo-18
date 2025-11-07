@@ -1,0 +1,3 @@
+function distra() {}
+
+export { distra };
