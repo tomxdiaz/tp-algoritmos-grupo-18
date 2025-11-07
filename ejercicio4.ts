@@ -1,3 +1,5 @@
+import { dijkstra } from './dijkstra';
+
 export {};
 
 type Vertice = {
@@ -69,27 +71,19 @@ function pesoArista(grafo: Grafo, origen: number, destino: number): number {
 
 // Agrega o actualiza una arista en el grafo
 // Si la arista ya existe, actualiza su peso
-// Complejidad: O(1) usando matriz de adyacencia (+ O(E) para mantener sincronizado el array de aristas)
+// Complejidad: O(1) usando matriz de adyacencia
 function agregarArista(grafo: Grafo, origen: number, destino: number, peso: number): void {
   const i = origen - 1; // Convertir a índice 0-based
   const j = destino - 1;
 
   // Actualizar matriz de adyacencia - O(1)
   grafo.matriz[i][j] = peso;
-
-  // Mantener sincronizado el array de aristas para compatibilidad
-  const aristaExistente = grafo.aristas.find((a) => a.origen === origen && a.destino === destino);
-  if (aristaExistente) {
-    aristaExistente.peso = peso;
-  } else {
-    grafo.aristas.push({ origen, destino, peso });
-  }
 }
 
 // Algoritmo de Floyd-Warshall para encontrar los caminos más cortos entre todos los pares de vértices
 // Entrada: G grafo de entrada
 // Salida: R grafo con una arista con la distancia mínima entre cada par de vértices
-function floydWarshall(G: Grafo): Grafo {
+function floydWarshall(G: Grafo): number[][] {
   // Inicializar grafo R
   const R = inicializarGrafo(G);
 
@@ -131,7 +125,7 @@ function floydWarshall(G: Grafo): Grafo {
     }
   }
 
-  return R;
+  return R.matriz;
 }
 
 // Función auxiliar para construir un grafo con matriz de adyacencia
@@ -162,7 +156,7 @@ function construirGrafo(vertices: Vertice[], aristas: Arista[]): Grafo {
 
 // Ejemplo de uso
 
-const ejemploFloydWarshall: Grafo = construirGrafo(
+const grafoEjemplo: Grafo = construirGrafo(
   [{ nombre: 1 }, { nombre: 2 }, { nombre: 3 }, { nombre: 4 }],
   [
     { origen: 1, destino: 3, peso: 3 },
@@ -174,11 +168,48 @@ const ejemploFloydWarshall: Grafo = construirGrafo(
   ]
 );
 
-console.log('--- RESULTADO EJEMPLO FLOYD-WARSHALL ---');
-console.log('Grafo de entrada:', ejemploFloydWarshall);
-const startTimeEjemplo = performance.now();
-const resultadoEjemploFloydWarshall = floydWarshall(ejemploFloydWarshall);
-const endTimeEjemplo = performance.now();
-const tiempoDeEjecucionEjemplo = endTimeEjemplo - startTimeEjemplo;
-console.log(`Tiempo de ejecucion: ${tiempoDeEjecucionEjemplo.toFixed(3)}ms.`);
-console.log('Resultado - Grafo con distancias mínimas entre todos los pares de vértices:', resultadoEjemploFloydWarshall);
+const grafoEjemploGrande: Grafo = construirGrafo(
+  Array.from({ length: 2000 }, (_, i) => ({ nombre: i + 1 })),
+  Array.from({ length: 2000 }, () => ({
+    origen: Math.floor(Math.random() * 2000) + 1,
+    destino: Math.floor(Math.random() * 2000) + 1,
+    peso: Math.floor(Math.random() * 10) + 1,
+  }))
+);
+
+console.log('\n --- RESULTADO EJEMPLO FLOYD-WARSHALL --- \n');
+const floydWarshallStart = performance.now();
+const resultadoEjemploFloydWarshall = floydWarshall(grafoEjemplo);
+const floydWarshallEnd = performance.now();
+const tiempoDeEjecucionFloydWarshall = floydWarshallEnd - floydWarshallStart;
+console.log('Matriz de adyacencia con distancias mínimas entre todos los pares de vértices:', resultadoEjemploFloydWarshall);
+console.log(`Tiempo de ejecucion floyd-warshall: ${tiempoDeEjecucionFloydWarshall.toFixed(3)}ms.`);
+
+console.log('\n --- RESULTADO EJEMPLO "N" DIJKSTRAS (uno por cada vertice) --- \n');
+const dijkstraStart = performance.now();
+const resultadoEjemploDijkstra1 = dijkstra(grafoEjemplo, 1);
+const resultadoEjemploDijkstra2 = dijkstra(grafoEjemplo, 2);
+const resultadoEjemploDijkstra3 = dijkstra(grafoEjemplo, 3);
+const resultadoEjemploDijkstra4 = dijkstra(grafoEjemplo, 4);
+const dijkstraEnd = performance.now();
+const tiempoDeEjecucionDijkstra = dijkstraEnd - dijkstraStart;
+
+console.log('Resultado Dijkstra Vertice 1:', resultadoEjemploDijkstra1);
+console.log('Resultado Dijkstra Vertice 2:', resultadoEjemploDijkstra2);
+console.log('Resultado Dijkstra Vertice 3:', resultadoEjemploDijkstra3);
+console.log('Resultado Dijkstra Vertice 4:', resultadoEjemploDijkstra4);
+console.log(`Tiempo de ejecución "n" dijkstras (uno por cada vertice): ${tiempoDeEjecucionDijkstra.toFixed(3)}ms.`);
+
+const floydWarshallGrandeStart = performance.now();
+floydWarshall(grafoEjemploGrande);
+const floydWarshallGrandeEnd = performance.now();
+const tiempoDeEjecucionFloydWarshallGrande = floydWarshallGrandeEnd - floydWarshallGrandeStart;
+console.log(`Tiempo de ejecucion floyd-warshall en grafo grande (2000 vertices): ${tiempoDeEjecucionFloydWarshallGrande.toFixed(3)}ms.`);
+
+const dijkstraGrandeStart = performance.now();
+for (let v = 1; v <= grafoEjemploGrande.vertices.length; v++) {
+  dijkstra(grafoEjemploGrande, v);
+}
+const dijkstraGrandeEnd = performance.now();
+const tiempoDeEjecucionDijkstraGrande = dijkstraGrandeEnd - dijkstraGrandeStart;
+console.log(`Tiempo de ejecucion "n" dijkstras en grafo grande (2000 vertices): ${tiempoDeEjecucionDijkstraGrande.toFixed(3)}ms.`);

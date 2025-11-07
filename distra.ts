@@ -1,3 +1,0 @@
-function distra() {}
-
-export { distra };

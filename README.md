@@ -12,7 +12,7 @@ Para correrlo en consola con tsx: Instalar tsx en consola
 
 - Comando: npm install -g tsx
 
-- Correr "tsx nombre-del-archivo.tsx" en consola desde la ubicacion del archivo
+- Correr "tsx nombre-del-archivo.ts" en consola desde la ubicacion del archivo
 
 - Ej: Mi archivo está en la carpeta "tp-algoritmos-grupo-18" entonces
   abro la consola ahi o voy navegando hasta ahi y ejecuto el comando.
