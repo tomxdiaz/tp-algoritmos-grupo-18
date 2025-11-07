@@ -6,11 +6,11 @@ type Punto = {
 };
 
 const ejemplo1: Punto[] = [
-  { x: -22, y: -22 },
-  { x: -1, y: -1 },
-  { x: 0, y: 0 },
   { x: 1, y: 1 },
-  { x: 22, y: 22 },
+  { x: 8, y: 8 },
+  { x: 12, y: 12 },
+  { x: 2, y: 2 },
+  { x: -20, y: -20 },
 ]; // Respuesta esperada: [{x: -1, y: -1}, {x: 0, y:0}]
 const ejemplo2: Punto[] = generarListaDePuntosAleatorios(50, 50);
 const ejemplo3: Punto[] = generarListaDePuntosAleatorios(500, 500);
@@ -50,6 +50,11 @@ function calcularDistancia(p1: Punto, p2: Punto): number {
 
 // Funcion para encontrar los dos puntos mas cercanos - DIVIDE AND CONQUER
 function obtenerPuntosMasCercanosDivideAndConquer(puntos: Punto[]): Punto[] {
+  if (puntos.length <= 2) {
+    // no quiero usar la version ingenua dentro de la recursiva
+    return puntos;
+  }
+
   // Ordenar puntos por X - O(n log n)
   const puntosOrdenadosX = [...puntos].sort((a, b) => a.x - b.x);
   // Ordenar puntos por Y para optimizar la búsqueda en la franja - O(n log n)
@@ -62,9 +67,24 @@ function obtenerPuntosMasCercanosDivideAndConquer(puntos: Punto[]): Punto[] {
 function funcionRecursiva(puntosX: Punto[], puntosY: Punto[]): Punto[] {
   const n = puntosX.length;
 
-  // Caso base: si hay 3 o menos puntos, usar fuerza bruta - O(1)
-  if (n <= 3) {
-    return obtenerPuntosMasCercanosIngenua(puntosX);
+  // Caso base: si hay 2 puntos, devolverlos directamente - O(1)
+  if (n === 2) {
+    return puntosX;
+  }
+
+  // Caso base: si hay 3 puntos, comparar los 3 pares - O(1)
+  if (n === 3) {
+    const dist01 = calcularDistancia(puntosX[0], puntosX[1]);
+    const dist02 = calcularDistancia(puntosX[0], puntosX[2]);
+    const dist12 = calcularDistancia(puntosX[1], puntosX[2]);
+
+    if (dist01 <= dist02 && dist01 <= dist12) {
+      return [puntosX[0], puntosX[1]];
+    } else if (dist02 <= dist12) {
+      return [puntosX[0], puntosX[2]];
+    } else {
+      return [puntosX[1], puntosX[2]];
+    }
   }
 
   // Dividir los puntos en dos mitades
@@ -113,8 +133,9 @@ function funcionRecursiva(puntosX: Punto[], puntosY: Punto[]): Punto[] {
     }
   }
 
-  // Verificar puntos en la franja - O(n) en el peor caso, pero amortizado O(n) total
-  // Solo necesitamos verificar hasta 7 puntos siguientes para cada punto
+  // Verificar puntos en la franja - O(n)
+  // El segundo "for" se ejecuta a lo sumo 7 veces por cada punto del primero, por lo que su complejidad es constante
+  // La complejidad total de ambos "for" es O(n)
   for (let i = 0; i < franja.length; i++) {
     for (let j = i + 1; j < franja.length && franja[j].y - franja[i].y < delta; j++) {
       const distancia = calcularDistancia(franja[i], franja[j]);
@@ -180,6 +201,9 @@ const endTimeEjemplo5DAC = performance.now();
 const tiempoDeEjecucionEjemplo5DAC = endTimeEjemplo5DAC - startTimeEjemplo5DAC;
 
 //
+console.log('Resultado Ingenua Ejemplo 1:', ejemplo1Ingenua);
+console.log('Resultado DAC Ejemplo 1:', ejemplo1DAC);
+
 console.log('\n--- INICIO COMPARACIÓN DE TIEMPOS ---\n');
 //
 console.log(
